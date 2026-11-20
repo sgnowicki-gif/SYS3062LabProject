@@ -1,0 +1,19 @@
+Assumptions:
+1. The system operates from 4 am to 8 pm, every day, 7 days a week. 
+    Those still in the system at 8pm will be serviced until 8:30, at which point they will be turned away (passengers in service @ 8:30 will have service completed)
+    Arrivals will stop at 8 pm
+2. Each passenger has a check bag with p = .45 (sourced from TSA data)
+    Modelled as a bernouli(.45) for each passenger
+3. Customers with a check bag must be routed to bag check
+    before security
+4. There are two bag check servers, customers will route to 
+    whichever one is open (shared queue) - if both are open they will choose server 1
+5. There are two security checkpoints (shared cue).
+6. The second security checkpoint opens when the queue is longer than 10, and will shut down when the queue goes below 3, after finishing service of current customer
+7. All queues are assummed to have limitless capacity
+8. There is no balking, as all passengers need to make their flights
+9. Inter-arival times (minutes) are dictated by a Burr 4p (2.08, 1.76, 5.37, -.05) RV (All negative values will be clipped to zero)
+10. Bag Check service times (seconds) are dictated by a lognormal (4.64, .29) RV
+11. Security checkpoint service times (seconds) are dictated by a Generalized Gamma (24.72, 3.77, 3.02) RV
+    * All RV's based on phitter analysis of generated data
+
